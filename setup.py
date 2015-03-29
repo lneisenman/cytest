@@ -23,6 +23,9 @@ import setuptools
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
 
+from distutils.extension import Extension
+from Cython.Build import cythonize
+
 # For Python 2/3 compatibility, pity we can't use six.moves here
 try:  # try Python 3 imports first
     import configparser
@@ -497,6 +500,13 @@ def setup_package():
         'test': {'test_suite': ('setup.py', 'tests'),
                  'cov': ('setup.py', root_pkg)}}
 
+    fubar_files = ['cytest/fubar/fubar.pyx', 'cytest/fubar/hello.c']
+    snafu_files = ['cytest/snafu/snafu.pyx']
+    other_files = ['cytest/fubar/fubar.pyx', 'cytest/fubar/hello.h',
+                   'cytest/fubar/c_hello.pxd', 'cytest/snafu/snafu.pyx']
+    ext_modules = [Extension('cytest/fubar', sources=fubar_files),
+                   Extension('cytest/snafu', sources=snafu_files)]
+
     setup(name=package,
           version=version,
           url=metadata['url'],
@@ -512,9 +522,11 @@ def setup_package():
           install_requires=install_reqs,
           setup_requires=['six'],
           cmdclass=cmdclass,
+          ext_modules=cythonize(ext_modules),
           tests_require=['pytest-cov', 'pytest'],
           package_data={package: metadata['package_data']},
-          data_files=[('.', metadata['data_files'])],
+          data_files=[('.', metadata['data_files']),
+                      ('cytest.fubar', other_files)],
           command_options=command_options,
           entry_points={'console_scripts': console_scripts},
           zip_safe=False)  # do not zip egg file after setup.py install
