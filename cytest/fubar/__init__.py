@@ -1,2 +1,3 @@
+from __future__ import absolute_import
 
-from fubar import fubar, hello
+from .fubar import fubar, hello

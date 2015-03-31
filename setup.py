@@ -504,8 +504,8 @@ def setup_package():
     snafu_files = ['cytest/snafu/snafu.pyx']
     other_files = ['cytest/fubar/fubar.pyx', 'cytest/fubar/hello.h',
                    'cytest/fubar/c_hello.pxd', 'cytest/snafu/snafu.pyx']
-    ext_modules = [Extension('cytest/fubar', sources=fubar_files),
-                   Extension('cytest/snafu', sources=snafu_files)]
+    ext_modules = [Extension('cytest.fubar.fubar', sources=fubar_files),
+                   Extension('cytest.snafu.snafu', sources=snafu_files)]
 
     setup(name=package,
           version=version,
