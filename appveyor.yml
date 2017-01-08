@@ -24,6 +24,8 @@ install:
   #- "%PYTHON%\\python.exe -V"
 
 build_script:
+  - "%PYTHON%\\python.exe setup.py build"
+
 
 test_script:
   # Put your test command here.
