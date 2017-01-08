@@ -23,7 +23,7 @@ install:
   - "%PYTHON%\\python.exe -m pip install wheel"
   #- "%PYTHON%\\python.exe -V"
 
-#build: off
+build_script:
 
 test_script:
   # Put your test command here.
