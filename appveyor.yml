@@ -1,6 +1,6 @@
 environment:
   matrix:
-    - PYTHON: "C:\\Miniconda35-x64"
+    - PYTHON: "C:\\Python35-x64"
 
 install:
   # this installs the appropriate Miniconda (Py2/Py3, 32/64 bit),
@@ -8,7 +8,7 @@ install:
   #- powershell .\\continuous-integration\\appveyor\\install.ps1
   #- "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   #- "%PYTHON%\\python.exe -m pip install wheel"
-  - "%PYTHON%\\conda install pip wheel numpy scipy pandas cython"
+  - "%PYTHON%\\python.exe pip install -U wheel numpy scipy pandas cython"
   
 build: false
 
