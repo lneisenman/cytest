@@ -10,7 +10,7 @@ install:
   #- "%PYTHON%\\python.exe -m pip install wheel"
   - "%PYTHON%\\python.exe pip install -U wheel numpy scipy pandas cython"
   
-build: false
+build: off
 
 test_script:
   # Build the compiled extension and run the project tests
