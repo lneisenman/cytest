@@ -7,6 +7,7 @@ python:
   - "2.7"
   - "3.5"
 install:
+  - pip install -U pip
   - pip install -U pytest pytest-cov
   - pip install numpy scipy pandas cython coverage coveralls
   - pip install -r requirements.txt
