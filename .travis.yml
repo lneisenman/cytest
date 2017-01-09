@@ -1,24 +1,18 @@
-# Travis configuration file using the build matrix feature
+# Travis configuration file based on https://docs.travis-ci.com/user/languages/python/
 # Read more under http://docs.travis-ci.com/user/build-configuration/
 # THIS SCRIPT IS SUPPOSED TO BE AN EXAMPLE. MODIFY IT ACCORDING TO YOUR NEEDS!
 
 language: python
-virtualenv:
-  system_site_packages: true
-env:
-  matrix:
-    - DISTRIB="conda" PYTHON_VERSION="2.7" COVERAGE="true"
-    - DISTRIB="conda" PYTHON_VERSION="3.4" COVERAGE="false"
+python:
+  - "2.7"
+  - "3.5"
 install:
-  - source continuous-integration/travis/travis_install.sh
+  - pip install numpy scipy pandas cython
   - pip install -r requirements.txt
-before_script:
-  - git config --global user.email "you@example.com"
-  - git config --global user.name "Your Name"
 script:
   - python setup.py test
 after_success:
-  - if [[ "$COVERAGE" == "true" ]]; then coveralls || echo "failed"; fi
+  - if [[ "$TRAVIS_PYTHON_VERSION" == "3.5" ]]; then coveralls || echo "failed"; fi
 cache:
   - apt
 sudo: required
