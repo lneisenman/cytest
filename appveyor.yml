@@ -44,6 +44,7 @@ install:
   # about it being out of date.
 #  - "pip install --disable-pip-version-check --user --upgrade pip"
   - "conda update -y pip"
+  - "conda install -y numpy scipy matplotlib pandas cython pytest"
 
   # Install the build dependencies of the project. If some dependencies contain
   # compiled extensions and are not provided as pre-built wheel packages,
@@ -57,7 +58,7 @@ build_script:
 
 test_script:
   # Run the project tests
-  - "python setup.py nosetests"
+  - "python setup.py test"
 
 after_test:
   # If tests are successful, create binary packages for the project.
