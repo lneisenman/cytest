@@ -14,6 +14,6 @@ script:
   - python setup.py test
 after_success:
   - if [[ "$TRAVIS_PYTHON_VERSION" == "3.5" ]]; then coveralls || echo "failed"; fi
-cache:
-  - apt
-sudo: required
+#cache:
+#  - apt
+#sudo: required
