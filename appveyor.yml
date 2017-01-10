@@ -50,16 +50,11 @@ install:
 #  - "pip install --disable-pip-version-check --user --upgrade pip"
   - ps: if ((Get-Command "conda.exe" -ErrorAction SilentlyContinue) -ne $null) 
         { 
-            if ((Get-Command "pip.exe" -ErrorAction SilentlyContinue) -eq $null)
-            {
-                 Write-Host "No pip here"
-                 conda install -y pip
-            }
             conda install -y pip numpy scipy matplotlib pandas cython pytest
         }
         else
         {
-            Write-Host "No conda here"
+            Write-Host "No conda here\n"
             pip install -U pip numpy scipy matplotlib pandas cython pytest
         }
 #  - "conda update -y pip"
