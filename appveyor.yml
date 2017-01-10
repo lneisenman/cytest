@@ -50,16 +50,17 @@ install:
         { 
             if ((Get-Command "pip.exe" -ErrorAction SilentlyContinue) -eq $null)
             {
-                 conda install -y pip
+                 {Write-Host "No pip here"}
+                 {conda install -y pip}
             }
-            conda update -y pip
-            conda install -y numpy scipy matplotlib pandas cython pytest
+            {conda update -y pip}
+            {conda install -y numpy scipy matplotlib pandas cython pytest}
         }
         else
         {
-            Write-Host "No conda here"
-            pip install -U pip
-            pip install numpy scipy matplotlib pandas cython pytest
+            {Write-Host "No conda here"}
+            {pip install -U pip}
+            {pip install numpy scipy matplotlib pandas cython pytest}
         }
 #  - "conda update -y pip"
 #  - "conda install -y numpy scipy matplotlib pandas cython pytest"
