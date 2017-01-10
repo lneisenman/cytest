@@ -7,7 +7,7 @@ python:
   - "2.7"
   - "3.4"
   - "3.5"
-#  - "3.6"
+  - "3.6"
 install:
   - pip install -U pip
   - pip install -U pytest pytest-cov
@@ -16,7 +16,7 @@ install:
 script:
   - python setup.py test
 after_success:
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "3.5" ]]; then coveralls || echo "failed"; fi
+  - if [[ "$TRAVIS_PYTHON_VERSION" == "3.6" ]]; then coveralls || echo "failed"; fi
 #cache:
 #  - apt
 #sudo: required
