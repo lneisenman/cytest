@@ -46,15 +46,30 @@ install:
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
 #  - "pip install --disable-pip-version-check --user --upgrade pip"
-  - "conda update -y pip"
-  - "conda install -y numpy scipy matplotlib pandas cython pytest"
+  - ps: if ((Get-Command "conda.exe" -ErrorAction SilentlyContinue) -ne $null) 
+        { 
+            if ((Get-Command "pip.exe" -ErrorAction SilentlyContinue) -eq $null)
+            {
+                 conda install -y pip
+            }
+            conda update -y pip
+            conda install -y numpy scipy matplotlib pandas cython pytest
+        }
+        else
+        {
+            Write-Host "No conda here"
+            pip install -U pip
+            pip install numpy scipy matplotlib pandas cython pytest
+        }
+#  - "conda update -y pip"
+#  - "conda install -y numpy scipy matplotlib pandas cython pytest"
 
   # Install the build dependencies of the project. If some dependencies contain
   # compiled extensions and are not provided as pre-built wheel packages,
   # pip will build them from source using the MSVC compiler matching the
   # target Python version and architecture
   - "dir"
-  - ".\\build.cmd pip install -r requirements.txt"
+  - "build.cmd pip install -r requirements.txt"
 
 build_script:
   # Build the compiled extension
