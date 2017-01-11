@@ -7,14 +7,14 @@ environment:
 
   matrix:
 
-#    - PYTHON: "C:\\Miniconda-x64"
-#
-#    - PYTHON: "C:\\Miniconda3-x64"
-#      DISTUTILS_USE_SDK: "1"
-#
-#    - PYTHON: "C:\\Miniconda35-x64"
-    
-    - PYTHON: "C:\\Python36-x64"
+    - PYTHON: "C:\\Miniconda-x64"
+
+    - PYTHON: "C:\\Miniconda3-x64"
+      DISTUTILS_USE_SDK: "1"
+
+    - PYTHON: "C:\\Miniconda35-x64"
+   
+#    - PYTHON: "C:\\Python36-x64"
     
 install:
   # If there is a newer build queued for the same PR, cancel this one.
@@ -48,22 +48,22 @@ install:
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
 #  - "pip install --disable-pip-version-check --user --upgrade pip"
-  - ps: if ((Get-Command "conda.exe" -ErrorAction SilentlyContinue) -ne $null) 
-        { 
-            conda install -y pip numpy scipy matplotlib pandas cython pytest
-        }
-        else
-        {
-            pip install -U pip numpy scipy matplotlib pandas cython pytest
-        }
-#  - "conda update -y pip"
-#  - "conda install -y numpy scipy matplotlib pandas cython pytest"
+#  - ps: if ((Get-Command "conda.exe" -ErrorAction SilentlyContinue) -ne $null) 
+#        { 
+#            conda install -y pip numpy scipy matplotlib pandas cython pytest
+#        }
+#        else
+#        {
+#            pip install -U pip numpy scipy matplotlib pandas cython pytest
+#        }
+  - "conda install -y pip"
+  - "conda install -y numpy scipy matplotlib pandas cython pytest"
 
   # Install the build dependencies of the project. If some dependencies contain
   # compiled extensions and are not provided as pre-built wheel packages,
   # pip will build them from source using the MSVC compiler matching the
   # target Python version and architecture
-  - "dir"
+
   - "build.cmd pip install -r requirements.txt"
 
 build_script:
