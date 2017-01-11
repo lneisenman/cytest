@@ -54,8 +54,8 @@ install:
         }
         else
         {
-            Write-Host "No conda here\n"
-            pip install -U pip numpy scipy matplotlib pandas cython pytest
+            (Write-Host "No conda here\n")
+            (pip install -U pip numpy scipy matplotlib pandas cython pytest)
         }
 #  - "conda update -y pip"
 #  - "conda install -y numpy scipy matplotlib pandas cython pytest"
