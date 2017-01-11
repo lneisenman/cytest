@@ -7,12 +7,12 @@ environment:
 
   matrix:
 
-    - PYTHON: "C:\\Miniconda-x64"
-
-    - PYTHON: "C:\\Miniconda3-x64"
-      DISTUTILS_USE_SDK: "1"
-
-    - PYTHON: "C:\\Miniconda35-x64"
+#    - PYTHON: "C:\\Miniconda-x64"
+#
+#    - PYTHON: "C:\\Miniconda3-x64"
+#      DISTUTILS_USE_SDK: "1"
+#
+#    - PYTHON: "C:\\Miniconda35-x64"
     
     - PYTHON: "C:\\Python36-x64"
     
