@@ -14,7 +14,7 @@ environment:
 
     - PYTHON: "C:\\Miniconda35-x64"
    
-#    - PYTHON: "C:\\Python36-x64"
+    - PYTHON: "C:\\Miniconda36-x64"
     
 install:
   # If there is a newer build queued for the same PR, cancel this one.
@@ -58,6 +58,7 @@ install:
 #        }
   - "conda install -y pip"
   - "conda install -y numpy scipy matplotlib pandas cython pytest"
+  - "conda install -y pytest pytest-cov coverage"
 
   # Install the build dependencies of the project. If some dependencies contain
   # compiled extensions and are not provided as pre-built wheel packages,
@@ -69,10 +70,11 @@ install:
 build_script:
   # Build the compiled extension
   - "build.cmd python setup.py build"
+  - "pip install -e ."
 
 test_script:
   # Run the project tests
-  - "build.cmd python setup.py test"
+  - "py.test"
 
 after_test:
   # If tests are successful, create binary packages for the project.
