@@ -1,9 +1,7 @@
+# -*- coding: utf-8 -*-
+
 from __future__ import absolute_import
 
-from ._version import get_versions
-
-__version__ = get_versions()['version']
-del get_versions
-
-
 from .top import top
+
+__version__ = '0.2.0'
